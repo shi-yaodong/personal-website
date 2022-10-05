@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh-CN">
   <head>
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>代号S</title>
+    <meta name="description" content="石耀东的博客">
     <link rel="icon" href="./image/icon.ico" />
     <link rel="stylesheet" href="./css/index.css" />
     <style>
       body {
         margin: 0;
         height: 100vh;
-        background-color: #05060c;
+        background-image: linear-gradient(240deg,#804747 0%,#ad3f57 10%, #75437c 50%, #2e6386 100%);
+      }
+      *{
+        color: aliceblue;
+        /* border: 1px solid rgb(59, 126, 103); */
+      }
+      @media (max-width: 600px) {
+        .h-nav{
+          display: none;
+        }
       }
     </style>
   </head>
@@ -19,9 +29,9 @@
     <div class="all box">
       <!-- header -->
       <div class="header box">
-        <div class="h-tittle box">
+        <div class="h-tittle box shadow">
           <div class="h-logo box">
-            <img src="./image/logo.png" alt="logo">
+            <img src="./image/logo.png" alt="logo" width="50%">
           </div>
           <div class="h-nav box">
             <div class="h-about box">首页</div>
@@ -32,12 +42,12 @@
           </div>
         </div>
         <div class="h-avatar box">
-          <img src="./image/SYD.png" alt="syd"/>
+          <img src="./image/SYD.png" alt="syd" width="256px" height="256px" />
         </div>
         <div class="h-Introduction-two box">Hi 你好 我是石耀东</div>
         <div class="h-Introduction-three box">| 欢迎来到我的个人博客 |</div>
         <div class="h-link box">
-          <div class="h-link01 box shadow">
+          <div class="h-link01 box">
             <img src="./image/wechat.png" alt="wechat">
           </div>
           <div class="h-link02 box">
@@ -54,14 +64,34 @@
           <img src="./image/down.png" alt="down">
         </div>
       </div>
-      <!-- nav -->
-      <div class="nav box"></div>
       <!-- content -->
-      <div class="content box"></div>
+      <div class="content box">
+        <div class="video box">
+          <video src="./video/bandicam 2022-07-30 12-26-22-890.mp4" width="50%"  controls="controls"></video>
+        </div>
+        
+
+      </div>
       <!-- buttom -->
       <div class="buttom box"></div>
       <!-- footer -->
       <div class="footer box"></div>
     </div>
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", function () {
+          navigator.serviceWorker.register("sw.js");
+        });
+      }
+      let inWechatMP =
+        navigator.userAgent.match(/micromessenger/i) ||
+        navigator.userAgent.match(/miniprogram/i) ||
+        window.__wxjs_environment === "miniprogram";
+
+      if (inWechatMP) {
+        let w = document.getElementById("mp");
+        w.sheet.rules[0].style.display = "inline";
+      }
+    </script>
   </body>
 </html>
